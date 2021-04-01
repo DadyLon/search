@@ -1,0 +1,94 @@
+<?php require "database.php";?>
+<!DOCTYP HTML>
+<html>
+	<head>
+		<title>My Simple Google</title>
+		<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js'></script>
+		<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+
+		<!-- awal background -->
+		<div class="background">
+			<img src="img/1.png" data-speed="1" class="layer">
+			<img src="img/2.png" data-speed="5" class="layer">
+			<img src="img/3.png" data-speed="2" class="layer">
+			<img src="img/4.png" data-speed="6" class="layer">
+			<img src="img/5.png" data-speed="3" class="layer">
+			<img src="img/7.png" data-speed="4" class="layer">
+			<img src="img/8.png" data-speed="5" class="layer">
+			<img src="img/9.png" data-speed="1" class="layer">
+			<img src="img/11.png" data-speed="-3" class="layer">
+			<img src="img/12.png" data-speed="6" class="layer">
+
+			<div id='wrapper'>			
+				<div id='form'>
+					<div id='logo'>
+						<!-- jam -->
+						<div id="jam"></div>
+						<!-- akhir jam -->
+
+						<script type="text/javascript">
+							//<![CDATA[
+							var h=(new Date()).getHours();
+							var m=(new Date()).getMinutes();
+							var s=(new Date()).getSeconds();
+							if (h >= 4 && h < 10) document.writeln("Selamat Pagi");
+							if (h >= 10 && h < 15) document.writeln("Selamat Siang");
+							if (h >= 15 && h < 18) document.writeln("Selamat Sore");
+							if (h >= 18 || h < 4) document.writeln("Selamat Malam");
+							//]]>
+							</script>, <span class="type"></span>
+					</div>
+
+					<div id='form-input'>
+						<form method='get' action='index.html'>
+							<input type='text' id='q' name='q' style="width:100%" placeholder='Ketik disini'/>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- Script Script -->
+		<script type="text/javascript"> 
+			document.addEventListener("mousemove", parallax);
+			function parallax(e){
+				this.querySelectorAll('.layer').forEach(layer => {
+					const speed = layer.getAttribute('data-speed')
+
+					const x = (window.innerWidth - e.pageX*speed)/100
+					const y = (window.innerHeight - e.pageX*speed)/100
+
+					layer.style.transform = `translateX(${x}px) translateY(${y}px)`
+				})
+			}
+		</script>
+		<script type="text/javascript">
+			$(document).ready(function(){
+				function clock() {
+				  var now = new Date();
+				  var secs = ('0' + now.getSeconds()).slice(-2);
+				  var mins = ('0' + now.getMinutes()).slice(-2);
+				  var hr = now.getHours();
+				  var Time = hr + ":" + mins + ":" + secs;
+				  document.getElementById("jam").innerHTML = Time;
+				  requestAnimationFrame(clock);
+				}
+		
+				requestAnimationFrame(clock);
+			});
+		</script>
+		<script src="typed.min.js"></script>
+		<script>
+			var typed = new Typed('.type', {
+			strings: ['','DadyLON', 'Semangat!!'],
+			typeSpeed: 60,
+			backSpeed: 65,
+			loop:true,
+			});
+		</script>
+		<!-- akhir Script-->
+	</body>	
+</html>
